@@ -23,7 +23,7 @@ extern "C" {
 int lcs(char *X, int m, char *Y, int n, int nbthreads)
 {
   //omp_set_num_threads(nbthreads);
-  int large = std::max(m,n);
+  int large = std::max(n,m);
   int arr[large+1][large+1];
 
   #pragma omp parallel
