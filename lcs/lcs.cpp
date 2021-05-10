@@ -95,7 +95,7 @@ int main (int argc, char* argv[])
 
   int m = atoi(argv[1]);
   int n = atoi(argv[2]);
-  int nbthreads = atof(argv[3]);
+  int nbthreads = atoi(argv[3]);
 
   // get string data 
   char *X = new char[m];
