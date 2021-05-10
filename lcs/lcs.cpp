@@ -104,7 +104,7 @@ int main (int argc, char* argv[])
 
   
   //insert LCS code here.
-  int result = -1; // length of common subsequence
+  // int result = -1; // length of common subsequence
 
   std::chrono::time_point<std::chrono::system_clock>startTime=std::chrono::system_clock::now();
 
@@ -114,7 +114,7 @@ int main (int argc, char* argv[])
 
   std::chrono::duration<double> totalTime = endTime-startTime;
 
-  checkLCS(X, m, Y, n, result);
+  checkLCS(X, m, Y, n, Lcs);
   std::cerr<<totalTime.count()<<std::endl;
 
 
