@@ -7,7 +7,7 @@
 
 #include <vector>
 #include <chrono>
-#includ <omp.h>
+#include <omp.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -57,7 +57,7 @@ int lcs(char *X, int m, char *Y, int n, int nbthreads)
 #pragma omp parallel for schedule(guided,c)
 		for(int j=k;j<=large;j++)
 		  {
-		    if(a[k-1] == b[j])
+		    if(X[k-1] == Y[j])
 		      arr[k][j]=arr[k-1][j-1]+1;
 		    else
 		      arr[k][j]=std::max(arr[k][j-1],arr[k-1][j]);
@@ -82,8 +82,10 @@ int lcs(char *X, int m, char *Y, int n, int nbthreads)
     }
     return arr[m][n];
   }
+}
 				   
-int main (int argc, char* argv[]) {
+int main (int argc, char* argv[])
+{
 
   if (argc < 4) { std::cerr<<"usage: "<<argv[0]<<" <m> <n> <nbthreads>"<<std::endl;
     return -1;
