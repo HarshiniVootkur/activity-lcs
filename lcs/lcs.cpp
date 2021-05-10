@@ -69,7 +69,7 @@ int lcs(char *X, int m, char *Y, int n, int nbthreads)
 #pragma omp parallel for schedule(guided,c)
 		for(int i=k;i<=large;i++)
 		  {
-		    if(a[i]==b[k-1])
+		    if(X[i]==Y[k-1])
 		      arr[i][k]=arr[i-1][k-1]+1;
 		    else
 		      arr[i][k]=std::max(arr[i][k-1],arr[i-1][k]);
@@ -87,7 +87,9 @@ int lcs(char *X, int m, char *Y, int n, int nbthreads)
 int main (int argc, char* argv[])
 {
 
-  if (argc < 4) { std::cerr<<"usage: "<<argv[0]<<" <m> <n> <nbthreads>"<<std::endl;
+  if (argc < 4)
+    {
+      std::cerr<<"usage: "<<argv[0]<<" <m> <n> <nbthreads>"<<std::endl;
     return -1;
   }
 
@@ -104,13 +106,13 @@ int main (int argc, char* argv[])
   //insert LCS code here.
   int result = -1; // length of common subsequence
 
-  auto startTime=std::chrono::system_clock::now();
+  std::chrono::time_point<std::chrono::system_clock>startTime=std::chrono::system_clock::now();
 
   int Lcs = lcs(X,m,Y,n,nbthreads);
 
-  auto endTime = std::chrono::steady_clock::now();
+   std::chrono::time_point<std::chrono::system_clock>endTime=std::chrono::system_clock::now();
 
-  std::chrono::duration<double> totalTime = endTime - startTime;
+  std::chrono::duration<double> totalTime = endTime-startTime;
 
   checkLCS(X, m, Y, n, result);
   std::cerr<<totalTime.count()<<std::endl;
