@@ -22,7 +22,7 @@ extern "C" {
 
 int lcs(char *X, int m, char *Y, int n, int nbthreads)
 {
-  omp_set_num_threads(nbthreads);
+  //omp_set_num_threads(nbthreads);
   int large = std::max(m,n);
   int arr[large+1][large+1];
 
